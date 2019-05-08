@@ -104,15 +104,25 @@
         	var cashierLeft = parseInt(cashier.style.left.replace("px",""));
         	
         	const cashierStopPt = 500; //change once kitchen is updated
-        	console.log(cashierStop); 
 
         	if (cashierLeft >= cashierStopPt) {
 				cashierStop();
-
 			}
         }
 
         function cashierEvalReturn(){
-        	//call coordinates of interest
-        	//when cashier is near chef, bill disappears and 
+        	//call coordinates of interest (cashierLeft. chefRight)
+        	var chef1 = document.getElementById("chef1");
+        	var cashierLeft = parseInt(cashier.style.left.replace("px","")); //is this redundant? can I make this a global variable?
+        	console.log("eval return cashier left:", cashierLeft)
+
+        	var cashierRight = cashierLeft +parseInt(cashier.style.width.replace("px",""));
+        	console.log("cashier right", cashierRight)
+
+        	// var chef1Left = parseInt(chef1.style.left.replace("px",""));
+        	// var chef1Right = chef1Left + 179; //parseInt(chef1.style.width.replace("px",""));
+        	// console.log ("chef1:", chef1)
+        	// console.log("Cashier Left: ",cashierLeft)
+        	// console.log (chef1Right)
+        	//when cashier is near chef, bill disappears and cashier walks back
         }
