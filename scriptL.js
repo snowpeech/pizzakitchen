@@ -7,19 +7,19 @@
 
 		var intervalId;
 
-		reset();
+		// reset();
 
-		function reset(){
-			customer.style.left = "5px";
-			customer.style.top = "15px";
+		// function reset(){
+		// 	customer.style.left = "5px";
+		// 	customer.style.top = "15px";
 
-			orderTable.style.top="90px";
-			orderTable.style.left="250px";
+		// 	orderTable.style.top="90px";
+		// 	orderTable.style.left="250px";
 
-			cashier.style.top = "36px";
-			cashier.style.left = "287px";
+		// 	cashier.style.top = "36px";
+		// 	cashier.style.left = "287px";
 
-		}
+		// }
 
 		function start() {
 			intervalId = setInterval(tick, 50);
