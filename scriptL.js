@@ -21,6 +21,8 @@
 
 		// }
 
+		//new comment to log a change
+
 		function start() {
 			intervalId = setInterval(tick, 50);
         }
