@@ -65,7 +65,6 @@
         	billAppear();
         	cashierStart();
         	cashierEvalStop();
-        	
         });
 
         function audioOrder(){
@@ -102,7 +101,7 @@
         function cashierEvalStop(){
         	var cashierLeft = parseInt(cashier.style.left.replace("px",""));
         	
-        	const cashierStopPt = 500; //change to chef meeting point once kitchen is updated
+        	const cashierStopPt = 880; //change to chef meeting point once kitchen is updated
 
         	if (cashierLeft >= cashierStopPt) {
 				cashierStop();
@@ -117,7 +116,7 @@
 
         	console.log("cashier right", cashierRight)
 
-        	var chef1Left = 580 //parseInt(chef1.style.left.replace("px",""));
+        	var chef1Left = 925 //parseInt(chef1.style.left.replace("px",""));
         	console.log("Cashier Left: ",cashierLeft)
     
 
@@ -138,7 +137,7 @@
         	cashier.style.transform = "scaleX(1)";
         }
         function cashierWalkLeft(){
-        	cashier.style.left = `${parseInt(cashier.style.left.replace("px",""))+10}px`
+        	cashier.style.left = `${parseInt(cashier.style.left.replace("px",""))-10}px`
         	console.log("cashier walk left")
         	console.log(cashier.style.left)//493
         	//i think this doesn't work because cashierWalkRight is still running
