@@ -47,6 +47,22 @@
 			background-size: cover;
 		}
 
+		#freezer {
+			position: absolute;
+			width: 200px;
+			height: 300px;
+			background-image: url('static/img/freezer-closed.png');
+			background-size: cover;
+		}
+
+		#oven {
+			position: absolute;
+			width: 250px;
+			height: 200px;
+			background-image: url('static/img/oven-closed.png');
+			background-size: cover;
+		}
+
 	</style>
 
 </head>
@@ -68,11 +84,13 @@
 	<button id="start" onclick="start()" >Start</button>
 	<script type="text/javascript">
 		'use strict';
-		// initialize table and customer position
+		// initialize table and customer position 
 
 		var customer = document.getElementById('customer');
 		var orderTable = document.getElementById('order-table');
 		var cashier = document.getElementById('cashier');
+		var freezer = document.getElementById('freezer');
+		var oven = document.getElementById('oven');
 
 		var intervalId;
 
@@ -87,6 +105,15 @@
 
 			cashier.style.top = "36px";
 			cashier.style.left = "287px";
+
+			chef1.style.top = "36px";
+			chef1.style.left = "900px";
+
+			freezer.style.bottom = "30px";
+			freezer.style.left = '1110px';
+
+			oven.style.bottom = "30px";
+			oven.style.left = "690px";
 
 		}
 
