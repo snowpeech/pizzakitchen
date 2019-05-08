@@ -61,6 +61,10 @@
 	<div id="chef1"></div>
 	<div id="oven"></div>
 
+	<audio id="sound-computer-keyboard" src="static/audio/sound-computer-keyboard.wav"></audio>
+	<audio id="footsteps" src="static/audio/sound-footsteps-2.wav"></audio>
+	<audio id="order-up" src="static/audio/sound-order-up.wav"></audio>
+
 	<button id="start" onclick="start()" >Start</button>
 	<script type="text/javascript">
 		'use strict';
@@ -88,6 +92,7 @@
 
 		function start() {
 			intervalId = setInterval(tick, 50);
+			console.log("start")
         }
 
         function tick() {

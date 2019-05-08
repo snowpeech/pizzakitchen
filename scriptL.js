@@ -21,8 +21,12 @@
 
 		// }
 
-		//new comment to log a change
+		var orderIn = new CustomEvent('orderIn',{
+			detail:{}
+    		});
 
+		///////
+ 
 		function start() {
 			intervalId = setInterval(tick, 50);
         }
@@ -47,7 +51,15 @@
 
 			if (customerRight >= (tableLeft +2)) {
 				stop();
+				console.log("Triggering the OrderIn event")
+           		document.dispatchEvent(orderIn);
 			}
-
 		}
 
+	//add event listener
+		document.addEventListener("OrderIn", function(e) {
+        	alert("Dog barked event!");
+        	console.log("person speak")
+        	goodBoy();
+        	return false // this keeps the page from reloading
+        });
