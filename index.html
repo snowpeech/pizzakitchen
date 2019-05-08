@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pizza Kitchen</title>
+	<style type="text/css">
+		
+		.table {
+			background-image: url("static/img/table.png");
+			width: 100px;
+			height: 83px;
+			position: absolute;
+			background-size: contain;
+		}
+
+		#customer {
+			position: absolute;
+			width: 83px;
+			height: 151px;
+			background-image: url("static/img/person-hipster.png");
+			background-size:cover; 
+		}
+
+		#computer-left {
+			position: absolute;
+			width: 50px;
+			height: 57px;
+			background-image: url("static/img/computer-left.png");
+			background-size:cover; 
+			top: 54px;
+			left: 267px;
+			z-index: 10;
+		}
+
+		#cashier {
+			position: absolute;
+			width: 159px;
+			height: 146px;
+			background-image: url("static/img/pizza-man-left.gif");
+			background-size:cover; 
+		}
+
+	</style>
+
+</head>
+<body>
+	<div id="order-table" class = "table"></div>
+	<div id ="customer"></div>
+	<div id='computer-left'></div>
+	<div id="cashier"></div>
+
+	<button id="start" onclick="start()" >Start</button>
+	<script type="text/javascript">
+		// initialize table and customer position
+
+		var customer = document.getElementById('customer');
+		var orderTable = document.getElementById('order-table');
+		var cashier = document.getElementById('cashier');
+
+		var intervalId;
+
+		reset();
+
+		function reset(){
+			customer.style.left = "5px";
+			customer.style.top = "15px";
+
+			orderTable.style.top="90px";
+			orderTable.style.left="250px";
+
+			cashier.style.top = "36px";
+			cashier.style.left = "287px";
+
+		}
+
+		function start() {
+			intervalId = setInterval(tick, 50);
+        }
+
+        function tick() {
+			moveRight();
+			customerEvalStop();
+        }
+
+		function stop(){
+			clearInterval(intervalId);
+		}
+
+		function moveRight() {
+			customer.style.left = `${parseInt(customer.style.left.replace("px",""))+10}px`
+		}
+
+		function customerEvalStop(){
+			var customerLeft = parseInt(customer.style.left.replace("px",""));
+			var customerRight = customerLeft + 83;
+			var tableLeft = parseInt(orderTable.style.left.replace("px",""));
+
+			if (customerRight >= (tableLeft +2)) {
+				stop();
+			}
+
+		}
+
+
+	</script>
+
+</body>
+</html>
