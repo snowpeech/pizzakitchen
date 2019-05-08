@@ -33,10 +33,10 @@
 
 		#cashier {
 			position: absolute;
-			width: 159px;
-			height: 146px;
-			background-image: url("static/img/pizza-man-left.gif");
-			background-size:cover; 
+			width: 88px;
+			height: 140px;
+			background-image: url("static/img/cashier.png");
+			background-size:contain; 
 		}
 
 		#chef1 {
@@ -68,10 +68,8 @@
 			background-image: url('static/img/order.png');
 			background-size: cover;
 			z-index:400;
-			width: 50px;
-			height: 50px;
-			top:112px;
-			left:360px;
+			width: 39px;
+			height: 41px;
 			display: none;
 
 		}
@@ -116,8 +114,8 @@
 			orderTable.style.top="90px";
 			orderTable.style.left="250px";
 
-			cashier.style.top = "36px";
-			cashier.style.left = "287px";
+			cashier.style.top = "31px";
+			cashier.style.left = "333px";
 
 			chef1.style.top = "36px";
 			chef1.style.left = "900px";
@@ -127,6 +125,9 @@
 
 			oven.style.bottom = "30px";
 			oven.style.left = "690px";
+
+			receipt.style.top = "111px";
+			receipt.style.left = "312px";
 
 		}
 
@@ -146,6 +147,7 @@
 
 		function moveRight() {
 			customer.style.left = `${parseInt(customer.style.left.replace("px",""))+10}px`
+			console.log("customer moveRight:", customer.style.left)
 		}
 
 		function customerEvalStop(){
