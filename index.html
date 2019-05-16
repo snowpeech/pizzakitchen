@@ -33,10 +33,9 @@
 
 		#cashier {
 			position: absolute;
-			width: 159px;
-			height: 146px;
-			background-image: url("static/img/pizza-man-left.gif");
-			background-size:cover; 
+			height: 140px;
+			background-image: url("static/img/cashier.png");
+			background-size:contain; 
 		}
 
 		#chef1 {
@@ -63,6 +62,16 @@
 			background-size: cover;
 		}
 
+		#receipt {
+			position: absolute;
+			background-image: url('static/img/order.png');
+			background-size: cover;
+			z-index:400;
+			width: 39px;
+			height: 41px;
+			display: none;
+
+		}
 	</style>
 
 </head>
@@ -71,6 +80,7 @@
 	<div id ="customer"></div>
 	<div id='computer-left'></div>
 	<div id="cashier"></div>
+	<div id="receipt"></div>
 
 	
 	<div id="freezer"></div>
@@ -80,6 +90,11 @@
 	<audio id="chef1-footsteps"><source src="static/audio/sound-footsteps-2.wav" type="audio/wav"></audio>
 	<div id="oven"></div>
 	<audio id="oven-close"><source src="static/audio/sound-oven-1-close.wav" type="audio/wav"></audio>
+
+	<audio id="sound-computer-keyboard" src="static/audio/sound-computer-keyboard.wav"></audio>
+	<audio id="footsteps" src="static/audio/sound-footsteps-2.wav"></audio>
+	<audio id="order-up" src="static/audio/sound-order-up.wav"></audio>
+
 	<button id="start" onclick="start()" >Start</button>
 	<script type="text/javascript">
 		'use strict';
@@ -102,8 +117,9 @@
 			orderTable.style.top="90px";
 			orderTable.style.left="250px";
 
-			cashier.style.top = "36px";
-			cashier.style.left = "287px";
+			cashier.style.top = "31px";
+			cashier.style.left = "333px";
+			cashier.style.width = "88px";
 
 			chef1.style.top = "36px";
 			chef1.style.left = "900px";
@@ -114,10 +130,14 @@
 			oven.style.bottom = "30px";
 			oven.style.left = "690px";
 
+			receipt.style.top = "111px";
+			receipt.style.left = "312px";
+
 		}
 
 		function start() {
 			intervalId = setInterval(tick, 50);
+			console.log("start")
         }
 
         function tick() {
@@ -131,6 +151,7 @@
 
 		function moveRight() {
 			customer.style.left = `${parseInt(customer.style.left.replace("px",""))+10}px`
+			console.log("customer moveRight:", customer.style.left)
 		}
 
 		function customerEvalStop(){
