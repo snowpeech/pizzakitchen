@@ -9,6 +9,7 @@
 
 		var intervalId;
 		var cashierInterval;
+        var cashierReturnInterval;
 
 		// reset();
 
@@ -84,78 +85,64 @@
         function cashierTick() {
 			cashierWalk();
 			cashierEvalStop();
-			cashierEvalReturn();
-			console.log("cashier tick loop")
         }
 
         function cashierWalk(){
-        	cashier.style.left = `${parseInt(cashier.style.left.replace("px",""))+10}px`
-        	receipt.style.left = `${parseInt(receipt.style.left.replace("px",""))+10}px`
+        	cashier.style.left = `${parseInt(cashier.style.left.replace("px",""))+10}px`;
+        	receipt.style.left = `${parseInt(receipt.style.left.replace("px",""))+10}px`;
         }
 
         function cashierStop() {
         	clearInterval(cashierInterval);
-        	console.log("cashier stop fn")
         }
-/// ERRORS BELOW!!!! cashierLeft isnt updating
+
         function cashierEvalStop(){
+
         	var cashierLeft = parseInt(cashier.style.left.replace("px",""));
         	
         	const cashierStopPt = 880; //change to chef meeting point once kitchen is updated
 
         	if (cashierLeft >= cashierStopPt) {
 				cashierStop();
+                
+                cashierReturn();
 			}
         }
 
-        function cashierEvalReturn(){
-        	//call coordinates of interest (cashierLeft. chefRight)
-        	var chef1 = document.getElementById("chef1");
-        	var cashierLeft = parseInt(cashier.style.left.replace("px","")); //is this redundant? can I make this a global variable?
-        	var cashierRight = cashierLeft + parseInt(cashier.style.width.replace("px",""));
-
-        	console.log("cashier right", cashierRight)
-
-        	var chef1Left = 925 //parseInt(chef1.style.left.replace("px",""));
-        	console.log("Cashier Left: ",cashierLeft)
-    
-
-        	if (cashierRight >= (chef1Left +10)){
-        		cashierReturn();
-        	}
-        	//when cashierRight is near chefLeft, bill disappears and cashier walks back
-        }
 
         function cashierReturn(){
+            startChef1(); 
+            console.log("start chef1")
         	cashierFlip();
-        	cashierWalkLeft();
-        	//cashierEvalReset();
+            cashierReturnInterval = setInterval(cashierReturnTick, 55);
+
         }
 
         function cashierFlip(){
         	receipt.style.display = "none";
         	cashier.style.transform = "scaleX(1)";
         }
+
+        function cashierReturnTick(){
+            cashierWalkLeft();
+            cashierEvalReset();
+
+        }
         function cashierWalkLeft(){
-        	cashier.style.left = `${parseInt(cashier.style.left.replace("px",""))-10}px`
-        	console.log("cashier walk left")
-        	console.log(cashier.style.left)//493
-        	//i think this doesn't work because cashierWalkRight is still running
+        	cashier.style.left = `${parseInt(cashier.style.left.replace("px",""))-10}px`;
+            receipt.style.left = `${parseInt(receipt.style.left.replace("px",""))-10}px`;
         }
 
         function cashierEvalReset(){
         	//stop once cashierLeft is near tableRight
         	var cashierLeft = parseInt(cashier.style.left.replace("px",""));
-        	console.log("eval reset cashier L", cashierLeft)
         	var tableRight = parseInt(orderTable.style.left.replace("px",""))+100; //table Lf + width
-        	console.log("eval reset table R", tableRight)
 
         	if (cashierLeft <= tableRight) { //and bill display ==none ?
-				console.log("cashier returned")
-				console.log("cashierleft evalrest", cashierLeft)
-				console.log("table R, eval reset", tableRight)
-				
-				cashierStop();
+				cashierReturnStop();
 			}
+        }
 
+        function cashierReturnStop(){
+            clearInterval(cashierReturnInterval);
         }
