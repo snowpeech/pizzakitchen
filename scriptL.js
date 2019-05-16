@@ -88,8 +88,8 @@
         }
 
         function cashierWalk(){
-        	cashier.style.left = `${parseInt(cashier.style.left.replace("px",""))+10}px`
-        	receipt.style.left = `${parseInt(receipt.style.left.replace("px",""))+10}px`
+        	cashier.style.left = `${parseInt(cashier.style.left.replace("px",""))+10}px`;
+        	receipt.style.left = `${parseInt(receipt.style.left.replace("px",""))+10}px`;
         }
 
         function cashierStop() {
@@ -111,8 +111,8 @@
 
 
         function cashierReturn(){
-            startChef1();
-            //setTimeout(() => cashierFlip(), 3500);
+            startChef1(); 
+            console.log("start chef1")
         	cashierFlip();
             cashierReturnInterval = setInterval(cashierReturnTick, 55);
 
@@ -130,6 +130,7 @@
         }
         function cashierWalkLeft(){
         	cashier.style.left = `${parseInt(cashier.style.left.replace("px",""))-10}px`;
+            receipt.style.left = `${parseInt(receipt.style.left.replace("px",""))-10}px`;
         }
 
         function cashierEvalReset(){
