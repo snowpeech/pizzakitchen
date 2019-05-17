@@ -38,7 +38,7 @@
 			background-size:contain; 
 		}
 
-		#chef1 {
+		.chef {
 			position: absolute;
 			width: 172px;
 			height: 156px;
@@ -72,6 +72,59 @@
 			display: none;
 
 		}
+
+		#pizza-table{
+			position: absolute;
+			left: 250px;
+			bottom: 30px;
+		}
+
+		#start{
+			position: absolute;
+			top:200px;
+		}
+		#pizza-box {
+			background-image: url('static/img/pizza-box.png');
+			position: absolute;
+			background-size: contain;
+			background-repeat: no-repeat;
+			height: 42px;
+			width: 92px;
+			bottom: 85px;
+			transform: rotate(352deg);
+			left: 250px;
+			z-index: 10;
+			display: none;
+		}
+
+		/* @keyframes chef2Walk{
+			0% {
+				left: 300px;
+				bottom: 30px;
+			}
+			100% {
+				left: 520px;
+				background-image: url("static/img/pizza-man.gif");
+			}
+		}
+
+		#chef2 {
+			animation: chef2Walk 3s ease-in-out 0s infinite alternate;
+		} */
+
+		#background-top{
+			width: 100%;
+			height: 130px;
+			background-color: aqua;
+			z-index: -200;
+		}
+		#background-bottom{
+			width: 100%;
+			height: calc(100vh - 130px);
+			background-color: yellow;
+			z-index: -200;
+		}
+
 	</style>
 
 </head>
@@ -81,12 +134,17 @@
 	<div id='computer-left'></div>
 	<div id="cashier"></div>
 	<div id="receipt"></div>
+	<div id="pizza-table" class="table"></div>
+	<div id="chef2" class="chef"></div>
+	<div id="pizza-box"></div>
 
+	<div id="background-top"></div>
+	<div id="background-bottom"></div>
 	
 	<div id="freezer"></div>
 	<audio id="freezer-open"><source src="static/audio/sound-fridge-2-open.wav" type="audio/wav"></audio>
 	<audio id="freezer-close"><source src="static/audio/sound-fridge-2-close.wav" type="audio/wav"></audio>
-	<div id="chef1"></div>
+	<div id="chef1" class="chef"></div>
 	<audio id="chef1-footsteps"><source src="static/audio/sound-footsteps-2.wav" type="audio/wav"></audio>
 	<div id="oven"></div>
 	<audio id="oven-close"><source src="static/audio/sound-oven-1-close.wav" type="audio/wav"></audio>
@@ -105,6 +163,7 @@
 		var cashier = document.getElementById('cashier');
 		var freezer = document.getElementById('freezer');
 		var oven = document.getElementById('oven');
+		var chef2 = document.getElementById('chef2');
 
 		var intervalId;
 
@@ -132,6 +191,9 @@
 
 			receipt.style.top = "111px";
 			receipt.style.left = "312px";
+
+			chef2.style.bottom = "30px";
+			chef2.style.left = "300px";
 
 		}
 
@@ -168,5 +230,6 @@
 	</script>
 	<script src="scriptZ.js"></script>
 	<script src="scriptL.js"></script>
+	<script src="scriptLZ.js"></script>
 </body>
 </html>
