@@ -69,7 +69,7 @@ function startChef1Up() {
     audio_chef1_footsteps.play();
     setTimeout(() => audio_chef1_footsteps.pause(), 3000);
     audio_chef1_footsteps.currentTime = 0;
-    startChef2();
+    setTimeout(() => startChef2(),3000);
 }
 
 function tickUpChef1() {

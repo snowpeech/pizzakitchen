@@ -5,39 +5,27 @@
 		var orderTable = document.getElementById('order-table');
 		var cashier = document.getElementById('cashier');
 		var receipt = document.getElementById("receipt");
+		var cashier_footsteps = document.getElementById('cashier-footsteps');
+		var music = document.getElementById('background-music');
 
 
 		var intervalId;
 		var cashierInterval;
         var cashierReturnInterval;
 
-		// reset();
-
-		// function reset(){
-		// 	customer.style.left = "5px";
-		// 	customer.style.top = "15px";
-
-		// 	orderTable.style.top="90px";
-		// 	orderTable.style.left="250px";
-
-		// 	cashier.style.top = "36px";
-		// 	cashier.style.left = "287px";
-
-		// }
-
 		var orderIn = new CustomEvent('orderIn',{
 			detail:{}
     		});
 
-		///////
  
 		function start() {
 			intervalId = setInterval(customerTick, 50);
         }
 
         function customerTick() {
-			customerMoveRight();
 			customerEvalStop();
+			customerMoveRight();
+			
         }
 
 		function customerStop(){
@@ -70,7 +58,8 @@
 
         function audioOrder(){
         	var voiceOrder = document.getElementById("order-up");
-			voiceOrder.play();  
+			voiceOrder.play();
+			setTimeout(() => music.play(), 500);
         }
 
         function billAppear(){
@@ -80,6 +69,9 @@
 
         function cashierStart() {
 			cashierInterval = setInterval(cashierTick, 50);
+			cashier_footsteps.play();
+			setTimeout(() => cashier_footsteps.pause(), 6000);
+			cashier_footsteps.currentTime = 0;
         }
 
         function cashierTick() {

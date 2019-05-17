@@ -2,13 +2,13 @@ var intervalId_chef2;
 var chef2 = document.getElementById('chef2');
 var pizzaTable =document.getElementById("pizza-table");
 var pizzaBox = document.getElementById('pizza-box');
+var kitchen_bell = document.getElementById('kitchen-bell');
 
 function startChef2() {
+    kitchen_bell.play();
+    setTimeout(() => kitchen_bell.pause(), 1000);
+    kitchen_bell.currentTime = 0;
     intervalId_chef2 = setInterval(tickChef2, 50);
-    //var audio_chef1_footsteps = document.getElementById('chef1-footsteps');
-    //audio_chef1_footsteps.play();
-    //setTimeout(() => audio_chef1_footsteps.pause(), 3000);
-    //audio_chef1_footsteps.currentTime = 0;
 }
 
 function tickChef2(){
@@ -19,6 +19,11 @@ function tickChef2(){
 function chef2MoveRight(){
     chef2.style.backgroundImage = "url('static/img/pizza-man-right.gif')";
     chef2.style.left = `${parseInt(chef2.style.left.replace("px", "")) + 10}px`;
+
+    var audio_chef2_footsteps = document.getElementById('chef2-footsteps');
+    audio_chef2_footsteps.play();
+    setTimeout(() => audio_chef2_footsteps.pause(), 2000);
+    audio_chef2_footsteps.currentTime = 0;
 }
 
 function chef2EvalStop(){
